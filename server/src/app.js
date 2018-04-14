@@ -11,7 +11,9 @@ app.use(cors())
 const mongodb_conn_module = require('./mongodbConnModule');
 var db = mongodb_conn_module.connect();
 
-var Post = require("../models/post");
+//var Post = require("../models/post");
+var Product = require("../models/product");
+var User = require("../models/user");
 
 app.get('/posts', (req, res) => {
   Post.find({}, 'title description', function (error, posts) {
