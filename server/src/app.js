@@ -43,6 +43,23 @@ app.post('/add_post', (req, res) => {
 	})
 })
 
+app.post('/register', (req, res) => {
+	//var db = req.db;
+	//var title = req.body.title;
+	//var description = req.body.description;
+	var new_user = new User(req.body)
+
+	new_user.save(function (error) {
+		if (error) {
+			console.log(error)
+		}
+		res.send({
+			success: true
+			
+		})
+	})
+})
+
 app.put('/posts/:id', (req, res) => {
 	var db = req.db;
 	Post.findById(req.params.id, 'title description', function (error, post) {
